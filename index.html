@@ -8,26 +8,17 @@
     <style>
         /* БАЗОВЫЕ НАСТРОЙКИ + ПЛАВНЫЙ СКРОЛЛ */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; } /* Плавная прокрутка для меню */
+        html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; color: #111; background: #fff; line-height: 1.6; }
         
         /* АНИМАЦИИ */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes textFadeIn {
-            0% { opacity: 0; filter: blur(3px); transform: translateX(-10px); }
-            100% { opacity: 1; filter: blur(0); transform: translateX(0); }
-        }
-        @keyframes barExpand {
-            0% { width: 0; opacity: 0; }
-            100% { width: 40px; opacity: 1; }
-        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes textFadeIn { 0% { opacity: 0; filter: blur(3px); transform: translateX(-10px); } 100% { opacity: 1; filter: blur(0); transform: translateX(0); } }
+        @keyframes barExpand { 0% { width: 0; opacity: 0; } 100% { width: 40px; opacity: 1; } }
 
         /* ГЛАВНЫЙ ЭКРАН */
         .hero {
-            position: relative; width: 100vw; height: 100vh;
+            position: relative; width: 100%; min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center;
             background: linear-gradient(135deg, rgba(6, 26, 21, 0.95) 0%, rgba(18, 70, 59, 0.85) 100%), url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
         }
@@ -80,6 +71,19 @@
         
         .sub-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #2d8b76; margin-bottom: 20px; display: block; }
 
+        /* КАРТОЧКИ СРАВНЕНИЯ КОНКУРЕНТОВ */
+        .compare-row { display: flex; background: #fff; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); overflow: hidden; margin-bottom: 20px; border: 1px solid #eee; }
+        .compare-bad { flex: 1; padding: 35px; border-right: 1px solid #eee; background: #fdfdfd; }
+        .compare-good { flex: 1; padding: 35px; background: #f2f7f5; border-left: 4px solid #134e40; }
+        .compare-label-bad { color: #8e9496; text-transform: uppercase; font-size: 11px; font-weight: 700; margin-bottom: 15px; letter-spacing: 1.5px; }
+        .compare-label-good { color: #2d8b76; text-transform: uppercase; font-size: 11px; font-weight: 700; margin-bottom: 15px; letter-spacing: 1.5px; }
+        .compare-row h3 { font-size: 22px; margin-bottom: 12px; }
+        .compare-bad h3 { color: #555; }
+        .compare-good h3 { color: #134e40; }
+        .compare-row p { font-size: 15px; line-height: 1.6; }
+        .compare-bad p { color: #777; }
+        .compare-good p { color: #222; }
+
         /* КАРТОЧКИ Q.E.D. ENGINE */
         .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
         .card { background: #fff; padding: 40px; border-top: 4px solid #134e40; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
@@ -91,218 +95,7 @@
         .pipeline-table th, .pipeline-table td { padding: 25px; text-align: left; border-bottom: 1px solid #eee; }
         .pipeline-table th { background: #134e40; color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
         .pipeline-table tr:hover { background: #f4f7f6; }
-        .status-badge { background: #e0f2ed; color: #134e40; padding: 6px 14px; font-size: 12px; font-weight: 600; border-radius: 2px; }
+        .status-badge { background: #e0f2ed; color: #134e40; padding: 6px 14px; font-size: 12px; font-weight: 600; border-radius: 2px; white-space: nowrap; }
 
         /* ПОДВАЛ (FOOTER) */
-        footer { background: #061a15; color: #fff; padding: 60px 10%; text-align: center; font-size: 14px; opacity: 0.9; }
-        footer p { margin-bottom: 10px; }
-        footer a { color: #4A90E2; text-decoration: none; }
-    </style>
-</head>
-<body>
-
-    <!-- ГЛАВНЫЙ ЭКРАН -->
-    <section id="home" class="hero">
-        <header>
-            <a href="#home" class="logo">
-                <div class="logo-bars">
-                    <div class="bar-1"></div>
-                    <div class="bar-2"></div>
-                </div>
-                <span class="logo-text">Polyphoros</span>
-            </a>
-            
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#qed">Q.E.D. Engine</a></li>
-                    <li><a href="#pipeline">Pipeline</a></li>
-                    <li><a href="#pipeline">Therapeutics</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <div class="hero-content">
-            <h1>Welcome<br>to Polyphoros</h1>
-            <p>Redefining the speed and safety of drug discovery and biobetter engineering through zero-hallucination AI and formal verification.</p>
-        </div>
-        
-        <button class="cookie-btn" onclick="acceptCookies()">Manage cookie preferences</button>
-    </section>
-
-    <!-- ABOUT US -->
-    <section id="about" class="section-white">
-        <div class="section-title">
-            <span class="sub-label">Zero-Hallucination R&D</span>
-            <h2>Beyond<br>Empirical<br>Biology</h2>
-        </div>
-        <div class="section-body">
-            <p>Polyphoros is an AI-Native Biotechnology company redefining the speed, safety, and deterministic nature of drug discovery.</p>
-            <p>While the industry relies on probabilistic models that discover efficacy "by chance," we integrate <strong>formal logic (Lean 4 theorem proving)</strong>, multi-agent orchestration, and large-scale knowledge graphs. Polyphoros eliminates the critical bottleneck of AI hallucinations in computational pharmacology.</p>
-            <p>We don't just predict molecules; we mathematically verify their safety pathways before <i>in vivo</i> trials.</p>
-        </div>
-    </section>
-
-    <!-- Q.E.D. ENGINE -->
-    <section id="qed" class="section-gray">
-        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <span class="sub-label">Our Core Technology</span>
-            <h2 style="font-size: 42px; color: #134e40; margin-bottom: 15px;">The Q.E.D. Engine</h2>
-            <p style="color: #666; font-size: 18px;">A proprietary, deterministic 4-stage in silico pipeline for targeted drug design.</p>
-        </div>
-        <div class="grid-cards">
-            <div class="card">
-                <h3>1. Target Identification</h3>
-                <p>Utilizing dynamic cellular pathway grounding and large-scale knowledge graphs. We identify the exact disrupted Gene Regulatory Networks (GRN) driving the pathology.</p>
-            </div>
-            <div class="card">
-                <h3>2. Structural Synthesis</h3>
-                <p>Multi-agent routing to synthesize novel chemical entities (NCEs) or radically optimize existing scaffolds (Biobetters) for maximum bioavailability.</p>
-            </div>
-            <div class="card">
-                <h3>3. Formal Verification (Lean 4)</h3>
-                <p>The industry's first mathematical safety filter. We use formal theorem proving to guarantee ADMET compliance and eliminate off-target cytotoxicity prior to physical synthesis.</p>
-            </div>
-        </div>
-    </section>
-
-            <!-- PIPELINE -->
-    <section id="pipeline" class="section-white" style="flex-direction: column; gap: 20px;">
-        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <span class="sub-label">Global & Regional Therapeutic Assets</span>
-            <h2 style="font-size: 42px; color: #134e40; margin-bottom: 15px;">Our Pipeline</h2>
-            <p style="color: #666; font-size: 18px;">Addressing unmet medical needs with regionally optimized, high-margin Biobetters designed for rapid M&A and out-licensing.</p>
-        </div>
-        
-        <table class="pipeline-table">
-            <thead>
-                <tr>
-                    <th>Program (Small Molecule)</th>
-                    <th>Target</th>
-                    <th>Indication</th>
-                    <th>Stage</th>
-                </tr>
-            </thead>
-            <tbody>
-                            <!-- RUSSIA / CIS REGION -->
-                <tr style="background: #f7faf9;">
-                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
-                        📍 RUSSIA & CIS REGION (Sanction-Resistant Biobetters)
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Modified Niclosamide</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Niclosamide + Fluorinated Radical</span></td>
-                    <td>STAT3</td>
-                    <td>Colorectal Cancer (CRC) / IBD</td>
-                    <td><span class="status-badge">In Silico Optimization</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Oral Next-Gen Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Lapatinib + Michael Acceptor</span></td>
-                    <td>HER2 Kinase Domain</td>
-                    <td>Targeted Oncology</td>
-                    <td><span class="status-badge">Target Identification</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Selective Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Crizotinib + Aromatic Radical</span></td>
-                    <td>METex14</td>
-                    <td>Non-Small Cell Lung Cancer</td>
-                    <td><span class="status-badge">Target Identification</span></td>
-                </tr>
-
-                <!-- UAE / MENA REGION -->
-                <tr style="background: #f7faf9;">
-                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
-                        📍 UAE / MENA REGION (Metabolic & Rare Diseases)
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Next-Gen Oral GLP-1R Agonist</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Loxoprofen + Azabicyclic core</span></td>
-                    <td>GLP-1 Receptor</td>
-                    <td>Severe Obesity / Type 2 Diabetes</td>
-                    <td><span class="status-badge">In Silico Optimization</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Covalent JAK1/TNF-α Suppressor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Trapidil + Michael Acceptor</span></td>
-                    <td>JAK1 / TNF-α</td>
-                    <td>Autoimmune (IBD, Rheumatoid Arthritis)</td>
-                    <td><span class="status-badge">Target Identification</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Lysosomal Chaperone (Poly-003)</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Deuterated Ambroxol</span></td>
-                    <td>Mutant GBA Enzyme</td>
-                    <td>Gaucher Disease (Consanguinity focus)</td>
-                    <td><span class="status-badge">Target Identification</span></td>
-                </tr>
-                <tr>
-                    <td><strong>FNIP1 PROTAC Degrader</strong><br><span style="font-size: 11px; color: #666;">First-in-Class Metabolic Switch</span></td>
-                    <td>FNIP1 / Folliculin Axis</td>
-                    <td>Metabolic Syndrome (Muscle-sparing)</td>
-                    <td><span class="status-badge" style="background: #fff0f0; color: #d32f2f;">Exploratory R&D</span></td>
-                </tr>
-
-                <!-- EUROPE REGION -->
-                <tr style="background: #f7faf9;">
-                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
-                        📍 EUROPE: DACH REGION (Immunology & Neurodegeneration)
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Next-Gen Oral TYK2 Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Deucravacitinib Optimization</span></td>
-                    <td>TYK2 Pseudokinase</td>
-                    <td>Resistant Crohn’s Disease / IBD</td>
-                    <td><span class="status-badge">Target Identification</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Oral Trem2 / ApoE Modulator</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Minnelide Derivatives</span></td>
-                    <td>Trem2-Stabilizing Cleavage</td>
-                    <td>Early-Stage Alzheimer’s</td>
-                    <td><span class="status-badge" style="background: #fff0f0; color: #d32f2f;">Exploratory R&D</span></td>
-                </tr>
-
-                <!-- CHINA / APAC REGION -->
-                <tr style="background: #f7faf9;">
-                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
-                        📍 CHINA / APAC REGION (Targeted Oncology)
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Oral Pan-RAF Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Sorafenib + Conformation Lock</span></td>
-                    <td>BRAF/CRAF Complexes</td>
-                    <td>Hepatocellular Carcinoma (HCC)</td>
-                    <td><span class="status-badge">Target Identification</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Dual CLDN18.2 / EGFR Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Quinazoline Derivatives</span></td>
-                    <td>Claudin 18.2 & EGFR</td>
-                    <td>Gastric Adenocarcinoma</td>
-                    <td><span class="status-badge">In Silico Optimization</span></td>
-                </tr>    
-                        
-        </table>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="contact">
-        <p><strong>Polyphoros Pharmaceuticals</strong></p>
-        <p>Applied AI-Native Biotech & Formal Bio-Engineering.</p>
-        <p style="margin-top: 20px; font-size: 12px; opacity: 0.5;">&copy; 2026 Polyphoros. All rights reserved.</p>
-    </footer>
-
-    <!-- СКРИПТЫ ДЛЯ КНОПОК -->
-    <script>
-        // Функция для кнопки Cookies
-        function acceptCookies() {
-            const btn = document.querySelector('.cookie-btn');
-            btn.innerHTML = "PREFERENCES SAVED ✓";
-            btn.style.background = "#134e40";
-            btn.style.color = "#fff";
-            btn.style.borderColor = "#134e40";
-            setTimeout(() => {
-                btn.style.display = 'none';
-            }, 2000);
-        }
-    </script>
-</body>
-</html>
+        footer { background: #061a15; color
