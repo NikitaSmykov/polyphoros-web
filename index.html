@@ -68,7 +68,6 @@
         .section-body { flex: 1.5; padding-top: 10px; }
         .section-body p { font-size: 18px; color: #444; margin-bottom: 25px; font-weight: 300; }
         .section-body strong { font-weight: 600; color: #134e40; }
-        
         .sub-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #2d8b76; margin-bottom: 20px; display: block; }
 
         /* КАРТОЧКИ СРАВНЕНИЯ КОНКУРЕНТОВ */
@@ -98,4 +97,244 @@
         .status-badge { background: #e0f2ed; color: #134e40; padding: 6px 14px; font-size: 12px; font-weight: 600; border-radius: 2px; white-space: nowrap; }
 
         /* ПОДВАЛ (FOOTER) */
-        footer { background: #061a15; color
+        footer { background: #061a15; color: #fff; padding: 60px 10%; text-align: center; font-size: 14px; opacity: 0.9; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #4A90E2; text-decoration: none; }
+
+        /* ========================================= */
+        /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ      */
+        /* ========================================= */
+        @media (max-width: 900px) {
+            header { flex-direction: column; align-items: flex-start; gap: 20px; padding: 20px 5%; }
+            nav ul { flex-wrap: wrap; gap: 15px; }
+            .hero-content { padding-left: 5%; padding-right: 5%; margin-top: 100px; }
+            .hero-content h1 { font-size: 52px; letter-spacing: -1.5px; }
+            .hero-content p { font-size: 16px; }
+            .cookie-btn { right: 5%; left: 5%; bottom: 20px; text-align: center; }
+            .section-white, .section-gray { flex-direction: column; padding: 60px 5%; gap: 30px; }
+            .section-title h2 { font-size: 38px; }
+            .section-body p { font-size: 16px; }
+            .compare-row { flex-direction: column; }
+            .compare-bad { border-right: none; border-bottom: 1px solid #eee; }
+            .grid-cards { grid-template-columns: 1fr; gap: 20px; }
+            .pipeline-table { display: block; overflow-x: auto; white-space: nowrap; }
+            footer { padding: 40px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section id="home" class="hero">
+        <header>
+            <a href="#home" class="logo">
+                <div class="logo-bars">
+                    <div class="bar-1"></div>
+                    <div class="bar-2"></div>
+                </div>
+                <span class="logo-text">Polyphoros</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#differentiation">Differentiation</a></li>
+                    <li><a href="#qed">Q.E.D. Engine</a></li>
+                    <li><a href="#pipeline">Pipeline</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero-content">
+            <h1>Welcome<br>to Polyphoros</h1>
+            <p>Redefining the speed and safety of drug discovery and biobetter engineering through zero-hallucination AI and formal verification.</p>
+        </div>
+        
+        <button class="cookie-btn" onclick="acceptCookies()">Manage cookie preferences</button>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="section-white">
+        <div class="section-title">
+            <span class="sub-label">Zero-Hallucination R&D</span>
+            <h2>Beyond<br>Empirical<br>Biology</h2>
+        </div>
+        <div class="section-body">
+            <p>Polyphoros is an AI-Native Biotechnology company redefining the speed, safety, and deterministic nature of drug discovery.</p>
+            <p>While the industry relies on probabilistic models that discover efficacy "by chance," we integrate <strong>formal logic (Lean 4 theorem proving)</strong>, multi-agent orchestration, and large-scale knowledge graphs. Polyphoros eliminates the critical bottleneck of AI hallucinations in computational pharmacology.</p>
+            <p>We don't just predict molecules; we mathematically verify their safety pathways before <i>in vivo</i> trials.</p>
+        </div>
+    </section>
+
+    <!-- ОТСТРОЙКА ОТ РЫНКА (COMPETITIVE ADVANTAGE) -->
+    <section id="differentiation" class="section-gray" style="flex-direction: column; gap: 20px;">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto; margin-bottom: 40px;">
+            <span class="sub-label">Market Differentiation</span>
+            <h2 style="font-size: 42px; color: #134e40; margin-bottom: 15px;">Formal Logic vs. AI Guesswork</h2>
+            <p style="color: #666; font-size: 18px;">Why Polyphoros structurally outperforms billion-dollar incumbents like Insilico Medicine and Recursion Pharmaceuticals.</p>
+        </div>
+        <div style="max-width: 1000px; margin: 0 auto; width: 100%;">
+            <div class="compare-row">
+                <div class="compare-bad">
+                    <div class="compare-label-bad">The Industry (e.g. Insilico Medicine)</div>
+                    <h3>Probabilistic "Smart Guessing"</h3>
+                    <p>Legacy AI-biotech relies on statistical LLMs and unverified generative models. Biology remains a "black box", inevitably leading to AI-hallucinations, off-target toxicity, and multi-billion-dollar clinical failures.</p>
+                </div>
+                <div class="compare-good">
+                    <div class="compare-label-good">The Polyphoros Standard</div>
+                    <h3>Zero-Hallucination Engine</h3>
+                    <p>We translate biology into strict mathematics. Every molecule generated is formally verified and mathematically proven safe by the <strong>Lean 4 compiler</strong> before it ever touches a test tube.</p>
+                </div>
+            </div>
+            <div class="compare-row">
+                <div class="compare-bad">
+                    <div class="compare-label-bad">The Industry (e.g. Recursion / Exscientia)</div>
+                    <h3>Brute-Force Mega-Labs</h3>
+                    <p>Competitors burn hundreds of millions of dollars building massive physical robotic factories to screen thousands of generated compounds, hoping a few survive <i>in vitro</i> testing.</p>
+                </div>
+                <div class="compare-good">
+                    <div class="compare-label-good">The Polyphoros Standard</div>
+                    <h3>Lean In-Silico Scaling</h3>
+                    <p>We hit with logic accuracy, not brute-force volume. By proving ADMET safety pathways virtually, we bypass the need for mega-factories, executing a highly capital-efficient, IP-centric business model.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q.E.D. ENGINE (Исправленная вёрстка) -->
+    <section id="qed" class="section-white" style="flex-direction: column; gap: 40px;">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <span class="sub-label">Our Core Technology</span>
+            <h2 style="font-size: 42px; color: #134e40; margin-bottom: 15px;">The Q.E.D. Engine</h2>
+            <p style="color: #666; font-size: 18px;">A proprietary, deterministic 4-stage in silico pipeline for targeted drug design.</p>
+        </div>
+        <div class="grid-cards" style="margin-top: 20px;">
+            <div class="card">
+                <h3>1. Target Identification</h3>
+                <p>Utilizing dynamic cellular pathway grounding and large-scale knowledge graphs. We identify the exact disrupted Gene Regulatory Networks (GRN) driving the pathology.</p>
+            </div>
+            <div class="card">
+                <h3>2. Structural Synthesis</h3>
+                <p>Multi-agent routing to synthesize novel chemical entities (NCEs) or radically optimize existing scaffolds (Biobetters) for maximum bioavailability.</p>
+            </div>
+            <div class="card">
+                <h3>3. Formal Verification (Lean 4)</h3>
+                <p>The industry's first mathematical safety filter. We use formal theorem proving to guarantee ADMET compliance and eliminate off-target cytotoxicity prior to physical synthesis.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section id="pipeline" class="section-gray" style="flex-direction: column; gap: 20px;">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <span class="sub-label">Global Therapeutic Assets</span>
+            <h2 style="font-size: 42px; color: #134e40; margin-bottom: 15px;">Internal Pipeline</h2>
+            <p style="color: #666; font-size: 18px;">Addressing unmet medical needs with regionally optimized, high-margin Biobetters designed for rapid out-licensing.</p>
+        </div>
+        
+        <table class="pipeline-table">
+            <thead>
+                <tr>
+                    <th>Program (Small Molecule)</th>
+                    <th>Target</th>
+                    <th>Indication</th>
+                    <th>Stage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- RUSSIA / CIS REGION -->
+                <tr style="background: #f2f7f5;">
+                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
+                        📍 RUSSIA & CIS REGION (Sanction-Resistant Biobetters)
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Modified Niclosamide</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Niclosamide + Fluorinated Radical</span></td>
+                    <td>STAT3</td>
+                    <td>Colorectal Cancer (CRC) / IBD</td>
+                    <td><span class="status-badge">In Silico Optimization</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Oral Next-Gen Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Lapatinib + Michael Acceptor</span></td>
+                    <td>HER2 Kinase Domain</td>
+                    <td>Targeted Oncology</td>
+                    <td><span class="status-badge">Target Identification</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Selective Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Crizotinib + Aromatic Radical</span></td>
+                    <td>METex14</td>
+                    <td>Non-Small Cell Lung Cancer</td>
+                    <td><span class="status-badge">Target Identification</span></td>
+                </tr>
+
+                <!-- UAE / MENA REGION -->
+                <tr style="background: #f2f7f5;">
+                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
+                        📍 UAE / MENA REGION (Metabolic & Rare Diseases)
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Next-Gen Oral GLP-1R Agonist</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Loxoprofen + Azabicyclic core</span></td>
+                    <td>GLP-1 Receptor</td>
+                    <td>Severe Obesity / Type 2 Diabetes</td>
+                    <td><span class="status-badge">In Silico Optimization</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Lysosomal Chaperone (Poly-003)</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Deuterated Ambroxol</span></td>
+                    <td>Mutant GBA Enzyme</td>
+                    <td>Gaucher Disease (Consanguinity focus)</td>
+                    <td><span class="status-badge">Target Identification</span></td>
+                </tr>
+
+                <!-- GLOBAL REGIONS -->
+                <tr style="background: #f2f7f5;">
+                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
+                        📍 GLOBAL EXPANSION (Europe & APAC)
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Next-Gen Oral TYK2 Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Deucravacitinib Optimization</span></td>
+                    <td>TYK2 Pseudokinase</td>
+                    <td>Resistant Crohn’s Disease / IBD</td>
+                    <td><span class="status-badge">Target Identification</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Oral Pan-RAF Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Sorafenib + Conformation Lock</span></td>
+                    <td>BRAF/CRAF Complexes</td>
+                    <td>Hepatocellular Carcinoma (HCC)</td>
+                    <td><span class="status-badge">In Silico Optimization</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- СТРАТЕГИЧЕСКОЕ ПАРТНЕРСТВО (B2B Услуги на заказ) -->
+    <section id="b2b" style="display: flex; flex-direction: column; text-align: center; background: #0a261d; padding: 100px 10%;">
+        <span class="sub-label" style="color: #4A90E2; margin-bottom: 15px;">B2B Co-Development</span>
+        <h2 style="font-size: 42px; color: #ffffff; margin-bottom: 25px; font-weight: 600; letter-spacing: -1px;">Custom Pipeline Engineering</h2>
+        <p style="color: #c4d9d4; font-size: 18px; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.7; font-weight: 300;">
+            Beyond our internal therapeutic assets, Polyphoros offers exclusive <strong>co-development agreements</strong> to Big Pharma and research institutions. We deploy the Q.E.D. Engine to solve your specific clinical bottlenecks—whether it's overcoming target resistance, reducing off-target toxicity, or executing rapid computational drug repurposing.
+        </p>
+        <a href="#contact" style="display: inline-block; margin: 0 auto; background: #ffffff; color: #134e40; padding: 16px 36px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; border-radius: 3px; transition: opacity 0.3s;">Request Collaboration</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <p><strong>Polyphoros Pharmaceuticals</strong></p>
+        <p>Applied AI-Native Biotech & Formal Bio-Engineering.</p>
+        <p style="margin-top: 20px; font-size: 12px; opacity: 0.5;">&copy; 2026 Polyphoros. All rights reserved.</p>
+    </footer>
+
+    <!-- СКРИПТЫ ДЛЯ КНОПОК -->
+    <script>
+        function acceptCookies() {
+            const btn = document.querySelector('.cookie-btn');
+            btn.innerHTML = "PREFERENCES SAVED ✓";
+            btn.style.background = "#134e40";
+            btn.style.color = "#fff";
+            btn.style.borderColor = "#134e40";
+            setTimeout(() => { btn.style.display = 'none'; }, 2000);
+        }
+    </script>
+</body>
+</html>
