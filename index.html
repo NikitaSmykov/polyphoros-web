@@ -14,7 +14,7 @@
         /* АНИМАЦИИ */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes textFadeIn { 0% { opacity: 0; filter: blur(3px); transform: translateX(-10px); } 100% { opacity: 1; filter: blur(0); transform: translateX(0); } }
-        @keyframes barExpand { 0% { width: 0; opacity: 0; } 100% { width: 40px; opacity: 1; } }
+        @keyframes barExpand { 0% { width: 0; opacity: 0; } 100% { width: 48px; opacity: 1; } }
 
         /* ГЛАВНЫЙ ЭКРАН */
         .hero {
@@ -33,10 +33,10 @@
         }
 
         /* ЛОГОТИП POLYPHOROS */
-        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; color: #fff; }
-        .logo-bars { display: flex; flex-direction: column; gap: 6px; margin-top: 2px; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3)); }
-        .bar-1 { width: 0; height: 12px; background: #134e40; animation: barExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.3s; } 
-        .bar-2 { width: 0; height: 12px; background: #8e9496; animation: barExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.5s; } 
+        .logo { display: flex; align-items: center; gap: 18px; text-decoration: none; color: #fff; }
+        .logo-bars { display: flex; flex-direction: column; gap: 12px; margin-top: 2px; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3)); }
+        .bar-1 { width: 0; height: 7px; background: #134e40; animation: barExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.3s; } 
+        .bar-2 { width: 0; height: 7px; background: #8e9496; animation: barExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.5s; } 
         .logo-text { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 400; letter-spacing: 0.5px; opacity: 0; animation: textFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
         /* МЕНЮ */
@@ -242,9 +242,9 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- RUSSIA / CIS REGION -->
-                <tr style="background: #f2f7f5;">
-                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
+                                <!-- RUSSIA / CIS REGION -->
+                <tr style="background: #fdfdfd;">
+                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 20px 30px;">
                         📍 RUSSIA & CIS REGION (Sanction-Resistant Biobetters)
                     </td>
                 </tr>
@@ -268,8 +268,8 @@
                 </tr>
 
                 <!-- UAE / MENA REGION -->
-                <tr style="background: #f2f7f5;">
-                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
+                <tr style="background: #fdfdfd;">
+                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 20px 30px;">
                         📍 UAE / MENA REGION (Metabolic & Rare Diseases)
                     </td>
                 </tr>
@@ -280,16 +280,28 @@
                     <td><span class="status-badge">In Silico Optimization</span></td>
                 </tr>
                 <tr>
+                    <td><strong>Covalent JAK1/TNF-α Suppressor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Trapidil + Michael Acceptor</span></td>
+                    <td>JAK1 / TNF-α</td>
+                    <td>Autoimmune (IBD, Rheumatoid Arthritis)</td>
+                    <td><span class="status-badge">Target Identification</span></td>
+                </tr>
+                <tr>
                     <td><strong>Lysosomal Chaperone (Poly-003)</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Deuterated Ambroxol</span></td>
                     <td>Mutant GBA Enzyme</td>
                     <td>Gaucher Disease (Consanguinity focus)</td>
                     <td><span class="status-badge">Target Identification</span></td>
                 </tr>
+                <tr>
+                    <td><strong>FNIP1 PROTAC Degrader</strong><br><span style="font-size: 11px; color: #666;">First-in-Class Metabolic Switch</span></td>
+                    <td>FNIP1 / Folliculin Axis</td>
+                    <td>Metabolic Syndrome (Muscle-sparing)</td>
+                    <td><span class="status-badge" style="background: #fff0f0; color: #d32f2f;">Exploratory R&D</span></td>
+                </tr>
 
-                <!-- GLOBAL REGIONS -->
-                <tr style="background: #f2f7f5;">
-                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 15px 25px;">
-                        📍 GLOBAL EXPANSION (Europe & APAC)
+                <!-- EUROPE REGION -->
+                <tr style="background: #fdfdfd;">
+                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 20px 30px;">
+                        📍 EUROPE: DACH REGION (Immunology & Neurodegeneration)
                     </td>
                 </tr>
                 <tr>
@@ -299,9 +311,28 @@
                     <td><span class="status-badge">Target Identification</span></td>
                 </tr>
                 <tr>
+                    <td><strong>Oral Trem2 / ApoE Modulator</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Minnelide Derivatives</span></td>
+                    <td>Trem2-Stabilizing Cleavage</td>
+                    <td>Early-Stage Alzheimer’s</td>
+                    <td><span class="status-badge" style="background: #fff0f0; color: #d32f2f;">Exploratory R&D</span></td>
+                </tr>
+
+                <!-- CHINA / APAC REGION -->
+                <tr style="background: #fdfdfd;">
+                    <td colspan="4" style="color: #134e40; font-weight: 700; font-size: 14px; letter-spacing: 1px; padding: 20px 30px;">
+                        📍 CHINA / APAC REGION (Targeted Oncology)
+                    </td>
+                </tr>
+                <tr>
                     <td><strong>Oral Pan-RAF Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Sorafenib + Conformation Lock</span></td>
                     <td>BRAF/CRAF Complexes</td>
                     <td>Hepatocellular Carcinoma (HCC)</td>
+                    <td><span class="status-badge">In Silico Optimization</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Dual CLDN18.2 / EGFR Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Quinazoline Derivatives</span></td>
+                    <td>Claudin 18.2 & EGFR</td>
+                    <td>Gastric Adenocarcinoma</td>
                     <td><span class="status-badge">In Silico Optimization</span></td>
                 </tr>
             </tbody>
@@ -309,13 +340,13 @@
     </section>
 
     <!-- СТРАТЕГИЧЕСКОЕ ПАРТНЕРСТВО (B2B Услуги на заказ) -->
-    <section id="b2b" style="display: flex; flex-direction: column; text-align: center; background: #0a261d; padding: 100px 10%;">
-        <span class="sub-label" style="color: #4A90E2; margin-bottom: 15px;">B2B Co-Development</span>
-        <h2 style="font-size: 42px; color: #ffffff; margin-bottom: 25px; font-weight: 600; letter-spacing: -1px;">Custom Pipeline Engineering</h2>
-        <p style="color: #c4d9d4; font-size: 18px; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.7; font-weight: 300;">
+    <section id="b2b" style="display: flex; flex-direction: column; text-align: center; background: #ffffff; padding: 120px 10%; border-top: 1px solid #eee;">
+        <span class="sub-label" style="color: #000000; margin-bottom: 15px;">B2B Co-Development</span>
+        <h2 style="font-size: 42px; color: #134e40; margin-bottom: 25px; font-weight: 600; letter-spacing: -1px;">Custom Pipeline Engineering</h2>
+        <p style="color: #444444; font-size: 18px; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.7; font-weight: 300;">
             Beyond our internal therapeutic assets, Polyphoros offers exclusive <strong>co-development agreements</strong> to Big Pharma and research institutions. We deploy the Q.E.D. Engine to solve your specific clinical bottlenecks—whether it's overcoming target resistance, reducing off-target toxicity, or executing rapid computational drug repurposing.
         </p>
-        <a href="#contact" style="display: inline-block; margin: 0 auto; background: #ffffff; color: #134e40; padding: 16px 36px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; border-radius: 3px; transition: opacity 0.3s;">Request Collaboration</a>
+        <a href="mailto:partners@polyphoros.com?subject=B2B%20Co-Development%20Inquiry" style="display: inline-block; margin: 0 auto; background: #134e40; color: #ffffff; padding: 16px 36px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; border-radius: 3px; transition: opacity 0.3s; box-shadow: 0 4px 15px rgba(19, 78, 64, 0.2);">Request Collaboration</a>
     </section>
 
     <!-- FOOTER -->
