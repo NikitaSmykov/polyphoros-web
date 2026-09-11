@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyphoros | AI-Native Biotech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* БАЗА */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; color: #111; background: #fff; line-height: 1.6; }
+        
+        /* АНИМАЦИИ */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes textFadeIn { 0% { opacity: 0; filter: blur(3px); transform: translateX(-10px); } 100% { opacity: 1; filter: blur(0); transform: translateX(0); } }
+        @keyframes barExpand { 0% { width: 0; opacity: 0; } 100% { width: 48px; opacity: 1; } }
+
+        /* ГЛАВНЫЙ ЭКРАН (КЛАССИКА) */
+        .hero { position: relative; width: 100%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, rgba(6, 26, 21, 0.95) 0%, rgba(18, 70, 59, 0.85) 100%), url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; }
+        header { position: absolute; top: 0; left: 0; width: 100%; padding: 25px 6%; display: flex; justify-content: space-between; align-items: center; z-index: 10; background: rgba(4, 15, 12, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { display: flex; align-items: center; gap: 18px; text-decoration: none; color: #fff; }
+        .logo-bars { display: flex; flex-direction: column; gap: 12px; margin-top: 2px; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3)); }
+        .bar-1 { width: 0; height: 7px; background: #134e40; animation: barExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.3s; } 
+        .bar-2 { width: 0; height: 7px; background: #8e9496; animation: barExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.5s; } 
+        .logo-text { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 400; letter-spacing: 0.5px; opacity: 0; animation: textFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        nav ul { display: flex; list-style: none; gap: 45px; }
+        nav ul li a { color: #fff; text-decoration: none; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.8; transition: opacity 0.3s; }
+        nav ul li a:hover { opacity: 1; }
+        .hero-content { padding-left: 10%; max-width: 1000px; z-index: 2; margin-top: 40px; animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .hero-content h1 { color: #ffffff; font-size: 88px; font-weight: 600; line-height: 1.05; letter-spacing: -2.5px; margin-bottom: 25px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .hero-content p { color: #c4d9d4; font-size: 20px; font-weight: 300; line-height: 1.6; letter-spacing: 0.5px; max-width: 650px; }
+        .cookie-btn { position: absolute; bottom: 40px; right: 6%; background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); padding: 12px 24px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; backdrop-filter: blur(5px); }
+        .cookie-btn:hover { background: #fff; color: #134e40; }
+
+        /* БАЗОВЫЕ СЕКЦИИ (ABOUT И ОТСТРОЙКА ИЗ PDF) */
+        .section-white { background: #ffffff; padding: 120px 10%; display: flex; gap: 100px; }
+        .section-gray { background: #f7faf9; padding: 120px 10%; }
+        .section-title { flex: 1; }
+        .section-title h2 { font-size: 52px; font-weight: 600; color: #134e40; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;}
+        .section-body { flex: 1.5; padding-top: 10px; }
+        .section-body p { font-size: 18px; color: #444; margin-bottom: 25px; font-weight: 300; line-height: 1.6; }
+        .section-body strong { font-weight: 600; color: #134e40; }
+        .sub-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #2d8b76; margin-bottom: 20px; display: block; }
+        
+        .compare-row { display: flex; background: #fff; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); overflow: hidden; margin-bottom: 20px; border: 1px solid #eee; }
+        .compare-bad { flex: 1; padding: 35px; border-right: 1px solid #eee; background: #fdfdfd; }
+        .compare-good { flex: 1; padding: 35px; background: #f2f7f5; border-left: 4px solid #134e40; }
+        .compare-label-bad { color: #8e9496; text-transform: uppercase; font-size: 11px; font-weight: 700; margin-bottom: 15px; letter-spacing: 1.5px; }
+        .compare-label-good { color: #2d8b76; text-transform: uppercase; font-size: 11px; font-weight: 700; margin-bottom: 15px; letter-spacing: 1.5px; }
+        .compare-row h3 { font-size: 22px; margin-bottom: 12px; }
+        .compare-bad h3 { color: #555; }
+        .compare-good h3 { color: #134e40; }
+        .compare-row p { font-size: 15px; line-height: 1.6; }
+        .compare-bad p { color: #777; }
+        .compare-good p { color: #222; }
+
+        /* Q.E.D. ENGINE (ЖИДКОЕ СТЕКЛО ПОВЕРХ ВИДЕО) */
+        .section-qed-immersive { position: relative; padding: 140px 10%; overflow: hidden; background: #e6eae9; }
+        .qed-video-bg { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: 1; object-fit: cover; }
+        .qed-content-container { 
+            position: relative; z-index: 2; background: rgba(255, 255, 255, 0.45); 
+            backdrop-filter: blur(16px) saturate(150%) contrast(110%); -webkit-backdrop-filter: blur(16px) saturate(150%) contrast(110%); 
+            border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 40px; padding: 80px 60px; 
+            box-shadow: 0 40px 80px rgba(0,0,0,0.1), inset 0 2px 20px rgba(255,255,255,0.8); 
+            text-align: center; max-width: 1200px; margin: 0 auto; 
+        }
+        .qed-header h2 { font-size: 48px; font-weight: 600; color: #134e40; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; }
+        .qed-header p { font-size: 18px; color: #444; }
+        .qed-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; text-align: left; }
+        .qed-card-inner { background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 20px; }
+        .qed-number { font-family: 'Playfair Display', serif; font-size: 24px; color: #134e40; opacity: 0.6; font-weight: 600; margin-bottom: 15px; }
+        .qed-card-inner h3 { font-size: 20px; color: #111; margin-bottom: 10px; font-weight: 600; }
+        .qed-card-inner p { font-size: 15px; color: #333; line-height: 1.6; }
+
+        /* ТАБЛИЦА ПАЙПЛАЙНА */
+        .pipeline-table { width: 100%; border-collapse: collapse; margin-top: 50px; background: #fff; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
+        .pipeline-table th, .pipeline-table td { padding: 25px; text-align: left; border-bottom: 1px solid #eee; }
+        .pipeline-table th { background: #134e40; color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        .pipeline-table tr:hover { background: #f4f7f6; }
+        .status-badge { background: #e0f2ed; color: #134e40; padding: 6px 14px; font-size: 12px; font-weight: 600; border-radius: 2px; white-space: nowrap; }
+
+        /* ПОДВАЛ */
+        footer { background: #061a15; color: #fff; padding: 60px 10%; text-align: center; font-size: 14px; opacity: 0.9; }
+        footer p { margin-bottom: 10px; }
+
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 900px) {
+            header { flex-direction: column; align-items: flex-start; gap: 20px; padding: 20px 5%; }
+            nav ul { flex-wrap: wrap; gap: 15px; }
+            .hero-content { padding-left: 5%; padding-right: 5%; margin-top: 100px; }
+            .hero-content h1 { font-size: 52px; letter-spacing: -1.5px; }
+            .hero-content p { font-size: 16px; }
+            .section-white, .section-gray, .section-qed-immersive { flex-direction: column; padding: 60px 5%; gap: 30px; }
+            .section-title h2 { font-size: 38px; }
+            .compare-row { flex-direction: column; }
+            .compare-bad { border-right: none; border-bottom: 1px solid #eee; }
+            .qed-grid { grid-template-columns: 1fr; }
+            .pipeline-table { display: block; overflow-x: auto; white-space: nowrap; }
+            .cookie-btn { right: 5%; left: 5%; bottom: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section id="home" class="hero">
+        <header>
+            <a href="#home" class="logo">
+                <div class="logo-bars"><div class="bar-1"></div><div class="bar-2"></div></div>
+                <span class="logo-text">Polyphoros</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#differentiation">Differentiation</a></li>
+                    <li><a href="#qed">Q.E.D. Engine</a></li>
+                    <li><a href="#pipeline">Pipeline</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="hero-content">
+            <h1>Welcome<br>to Polyphoros</h1>
+            <p>Redefining the speed and safety of drug discovery and biobetter engineering through zero-hallucination AI and formal verification.</p>
+        </div>
+        <button class="cookie-btn" onclick="acceptCookies()">Manage cookie preferences</button>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="section-white">
+        <div class="section-title">
+            <span class="sub-label">Zero-Hallucination R&D</span>
+            <h2>Beyond<br>Empirical<br>Biology</h2>
+        </div>
+        <div class="section-body">
+            <p>Polyphoros is an AI-Native Biotechnology company redefining the speed, safety, and deterministic nature of drug discovery.</p>
+            <p>While the industry relies on probabilistic models that discover efficacy "by chance," we integrate <strong>formal logic (Lean 4 theorem proving)</strong>, multi-agent orchestration, and large-scale knowledge graphs. Polyphoros eliminates the critical bottleneck of AI hallucinations in computational pharmacology.</p>
+            <p>We don't just predict molecules; we mathematically verify their safety pathways before <i>in vivo</i> trials.</p>
+        </div>
+    </section>
+
+    <!-- ОТСТРОЙКА ОТ РЫНКА (COMPETITIVE ADVANTAGE) -->
+    <section id="differentiation" class="section-gray" style="flex-direction: column; gap: 20px;">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto; margin-bottom: 40px;">
+            <span class="sub-label">Market Differentiation</span>
+            <h2 style="font-size: 42px; color: #134e40; margin-bottom: 15px;">Formal Logic vs. AI Guesswork</h2>
+            <p style="color: #666; font-size: 18px;">Why Polyphoros structurally outperforms billion-dollar incumbents like Insilico Medicine and Recursion Pharmaceuticals.</p>
+        </div>
+        <div style="max-width: 1000px; margin: 0 auto; width: 100%;">
+            <div class="compare-row">
+                <div class="compare-bad">
+                    <div class="compare-label-bad">The Industry (e.g. Insilico Medicine)</div>
+                    <h3>Probabilistic "Smart Guessing"</h3>
+                    <p>Legacy AI-biotech relies on statistical LLMs and unverified generative models. Biology remains a "black box", inevitably leading to AI-hallucinations, off-target toxicity, and multi-billion-dollar clinical failures.</p>
+                </div>
+                <div class="compare-good">
+                    <div class="compare-label-good">The Polyphoros Standard</div>
+                    <h3>Zero-Hallucination Engine</h3>
+                    <p>We translate biology into strict mathematics. Every molecule generated is formally verified and mathematically proven safe by the <strong>Lean 4 compiler</strong> before it ever touches a test tube.</p>
+                </div>
+            </div>
+            <div class="compare-row">
+                <div class="compare-bad">
+                    <div class="compare-label-bad">The Industry (e.g. Recursion / Exscientia)</div>
+                    <h3>Brute-Force Mega-Labs</h3>
+                    <p>Competitors burn hundreds of millions of dollars building massive physical robotic factories to screen thousands of generated compounds, hoping a few survive <i>in vitro</i> testing.</p>
+                </div>
+                <div class="compare-good">
+                    <div class="compare-label-good">The Polyphoros Standard</div>
+                    <h3>Lean In-Silico Scaling</h3>
+                    <p>We hit with logic accuracy, not brute-force volume. By proving ADMET safety pathways virtually, we bypass the need for mega-factories, executing a highly capital-efficient, IP-centric business model.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Q.E.D. ENGINE (НАСТОЯЩЕЕ ЖИДКОЕ СТЕКЛО - LENS EFFECT) -->
+    <section id="qed" style="position: relative; padding: 140px 10%; overflow: hidden; background: #061a15 url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;">
+
+        <!-- ФОНОВОЕ ВИДЕО (Если браузер его заблокирует, останется красивая картинка выше) -->
+        <video src="hero-bg.mp4" autoplay muted loop playsinline style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: 1; object-fit: cover;"></video>
+
+        <!-- КОНТЕЙНЕР "ЖИДКОЕ СТЕКЛО" (Как на твоем референсе) -->
+        <div style="position: relative; z-index: 2; 
+                    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%); 
+                    backdrop-filter: blur(8px) brightness(110%) contrast(110%); 
+                    -webkit-backdrop-filter: blur(8px) brightness(110%) contrast(110%); 
+                    border: 1px solid rgba(255,255,255,0.3); 
+                    border-radius: 60px; /* Сильное скругление, как у капсулы */
+                    padding: 80px 60px; 
+                    max-width: 1200px; margin: 0 auto;
+                    /* МАГИЯ ЛИНЗЫ: Внешняя тень + Внутренний свет сверху + Внутренняя тень снизу */
+                    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 
+                                inset 0 10px 20px rgba(255,255,255,0.6), 
+                                inset 0 -10px 20px rgba(0,0,0,0.4);">
+
+                <div style="margin-bottom: 60px; text-align: center;">
+                <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #134e40; margin-bottom: 20px; display: block;">Our Core Technology</span>
+                <h2 style="font-size: 48px; font-weight: 600; color: #134e40; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;">The Q.E.D. Engine</h2>
+                <p style="font-size: 18px; color: #333333; font-weight: 500;">A proprietary, deterministic 4-stage in silico pipeline for targeted drug design.</p>
+            </div>
+
+                        <!-- КАРТОЧКИ ВНУТРИ СТЕКЛА -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: left;">
+                <div style="background: rgba(255, 255, 255, 0.85); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                    <div style="font-family: 'Playfair Display', serif; font-size: 24px; color: #134e40; font-weight: 700; margin-bottom: 15px;">01</div>
+                    <h3 style="font-size: 20px; color: #111; margin-bottom: 10px; font-weight: 600;">Target Identification</h3>
+                    <p style="font-size: 15px; color: #333; line-height: 1.6;">Utilizing dynamic cellular pathway grounding and large-scale knowledge graphs to identify exactly disrupted Gene Regulatory Networks (GRN).</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.85); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                    <div style="font-family: 'Playfair Display', serif; font-size: 24px; color: #134e40; font-weight: 700; margin-bottom: 15px;">02</div>
+                    <h3 style="font-size: 20px; color: #111; margin-bottom: 10px; font-weight: 600;">Structural Synthesis</h3>
+                    <p style="font-size: 15px; color: #333; line-height: 1.6;">Multi-agent routing to synthesize novel chemical entities (NCEs) or radically optimize existing scaffolds for maximum bioavailability.</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.85); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                    <div style="font-family: 'Playfair Display', serif; font-size: 24px; color: #134e40; font-weight: 700; margin-bottom: 15px;">03</div>
+                    <h3 style="font-size: 20px; color: #111; margin-bottom: 10px; font-weight: 600;">Formal Verification</h3>
+                    <p style="font-size: 15px; color: #333; line-height: 1.6;">The industry's first mathematical safety filter. We use formal theorem proving (Lean 4) to guarantee ADMET compliance prior to synthesis.</p>
+                </div>
+            </div>
+    </section>
+
+
+</section>
+<!-- PIPELINE (ПОЛНАЯ ТАБЛИЦА) -->
+<section id="pipeline" class="section-gray" style="flex-direction: column; padding: 120px 10%; gap: 20px;">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto; margin-bottom: 50px;">
+        <span class="sub-label">Global Therapeutic Assets</span>
+        <h2 style="font-size: 42px; color: #134e40; margin-bottom: 15px;">Internal Pipeline</h2>
+        <p style="color: #666; font-size: 18px;">Addressing unmet medical needs with regionally optimized, high-margin Biobetters designed for rapid out-licensing.</p>
+    </div>
+    <table class="pipeline-table">
+        <thead>
+            <tr>
+                <th>Program (Small Molecule)</th>
+                <th>Target</th>
+                <th>Indication</th>
+                <th>Stage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- RUSSIA / CIS REGION -->
+            <tr style="background: #fdfdfd;"><td colspan="4" style="color: #134e40; font-weight: 700; padding: 20px 30px;">📍 RUSSIA & CIS REGION (Sanction-Resistant Biobetters)</td></tr>
+            <tr><td><strong>Modified Niclosamide</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Niclosamide + Fluorinated Radical</span></td><td>STAT3</td><td>Colorectal Cancer (CRC) / IBD</td><td><span class="status-badge">In Silico Optimization</span></td></tr>
+            <tr><td><strong>Oral Next-Gen Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Lapatinib + Michael Acceptor</span></td><td>HER2 Kinase Domain</td><td>Targeted Oncology</td><td><span class="status-badge">Target Identification</span></td></tr>
+            <tr><td><strong>Selective Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Crizotinib + Aromatic Radical</span></td><td>METex14</td><td>Non-Small Cell Lung Cancer</td><td><span class="status-badge">Target Identification</span></td></tr>
+            
+            <!-- UAE / MENA REGION -->
+            <tr style="background: #fdfdfd;"><td colspan="4" style="color: #134e40; font-weight: 700; padding: 20px 30px;">📍 UAE / MENA REGION (Metabolic & Rare Diseases)</td></tr>
+            <tr><td><strong>Next-Gen Oral GLP-1R Agonist</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Loxoprofen + Azabicyclic core</span></td><td>GLP-1 Receptor</td><td>Severe Obesity / Type 2 Diabetes</td><td><span class="status-badge">In Silico Optimization</span></td></tr>
+            <tr><td><strong>Covalent JAK1/TNF-α Suppressor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Trapidil + Michael Acceptor</span></td><td>JAK1 / TNF-α</td><td>Autoimmune (IBD, Rheumatoid Arthritis)</td><td><span class="status-badge">Target Identification</span></td></tr>
+            <tr><td><strong>Lysosomal Chaperone (Poly-003)</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Deuterated Ambroxol</span></td><td>Mutant GBA Enzyme</td><td>Gaucher Disease (Consanguinity focus)</td><td><span class="status-badge">Target Identification</span></td></tr>
+            <tr><td><strong>FNIP1 PROTAC Degrader</strong><br><span style="font-size: 11px; color: #666;">First-in-Class Metabolic Switch</span></td><td>FNIP1 / Folliculin Axis</td><td>Metabolic Syndrome (Muscle-sparing)</td><td><span class="status-badge" style="background: #fff0f0; color: #d32f2f;">Exploratory R&D</span></td></tr>
+            
+            <!-- EUROPE REGION -->
+            <tr style="background: #fdfdfd;"><td colspan="4" style="color: #134e40; font-weight: 700; padding: 20px 30px;">📍 EUROPE: DACH REGION (Immunology & Neurodegeneration)</td></tr>
+            <tr><td><strong>Next-Gen Oral TYK2 Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Deucravacitinib Optimization</span></td><td>TYK2 Pseudokinase</td><td>Resistant Crohn’s Disease / IBD</td><td><span class="status-badge">Target Identification</span></td></tr>
+            <tr><td><strong>Oral Trem2 / ApoE Modulator</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Minnelide Derivatives</span></td><td>Trem2-Stabilizing Cleavage</td><td>Early-Stage Alzheimer’s</td><td><span class="status-badge" style="background: #fff0f0; color: #d32f2f;">Exploratory R&D</span></td></tr>
+            
+            <!-- CHINA / APAC REGION -->
+            <tr style="background: #fdfdfd;"><td colspan="4" style="color: #134e40; font-weight: 700; padding: 20px 30px;">📍 CHINA / APAC REGION (Targeted Oncology)</td></tr>
+            <tr><td><strong>Oral Pan-RAF Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Sorafenib + Conformation Lock</span></td><td>BRAF/CRAF Complexes</td><td>Hepatocellular Carcinoma (HCC)</td><td><span class="status-badge">In Silico Optimization</span></td></tr>
+            <tr><td><strong>Dual CLDN18.2 / EGFR Inhibitor</strong><br><span style="font-size: 11px; color: #666;">Scaffold: Quinazoline Derivatives</span></td><td>Claudin 18.2 & EGFR</td><td>Gastric Adenocarcinoma</td><td><span class="status-badge">In Silico Optimization</span></td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- СТРАТЕГИЧЕСКОЕ ПАРТНЕРСТВО (B2B) -->
+<section id="b2b" style="display: flex; flex-direction: column; text-align: center; background: #ffffff; padding: 120px 10%; border-top: 1px solid #eee;">
+    <span class="sub-label" style="color: #000000; margin-bottom: 15px;">B2B Co-Development</span>
+    <h2 style="font-size: 42px; color: #134e40; margin-bottom: 25px; font-weight: 600; letter-spacing: -1px;">Custom Pipeline Engineering</h2>
+    <p style="color: #444444; font-size: 18px; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.7; font-weight: 300;">
+        Beyond our internal therapeutic assets, Polyphoros offers exclusive <strong>co-development agreements</strong> to Big Pharma and research institutions. We deploy the Q.E.D. Engine to solve your specific clinical bottlenecks—whether it's overcoming target resistance, reducing off-target toxicity, or executing rapid computational drug repurposing.
+    </p>
+    <a href="mailto:partners@polyphoros.com?subject=B2B%20Co-Development%20Inquiry" style="display: inline-block; margin: 0 auto; background: #134e40; color: #ffffff; padding: 16px 36px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; border-radius: 3px; transition: opacity 0.3s; box-shadow: 0 4px 15px rgba(19, 78, 64, 0.2);">Request Collaboration</a>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+    <p><strong>Polyphoros Pharmaceuticals</strong></p>
+    <p>Applied AI-Native Biotech & Formal Bio-Engineering.</p>
+    <p style="margin-top: 20px; font-size: 12px; opacity: 0.5;">&copy; 2026 Polyphoros. All rights reserved.</p>
+</footer>
+
+<!-- СКРИПТЫ ДЛЯ КНОПОК -->
+<script>
+    function acceptCookies() {
+        const btn = document.querySelector('.cookie-btn');
+        btn.innerHTML = "PREFERENCES SAVED ✓";
+        btn.style.background = "#134e40";
+        btn.style.color = "#fff";
+        btn.style.borderColor = "#134e40";
+        setTimeout(() => { btn.style.display = 'none'; }, 2000);
+    }
+</script>
+
+    <!-- СКРИПТЫ ДЛЯ КНОПОК -->
+    <script>
+        function acceptCookies() {
+            const btn = document.querySelector('.cookie-btn');
+            btn.innerHTML = "PREFERENCES SAVED ✓";
+            btn.style.background = "#134e40";
+            btn.style.color = "#fff";
+            btn.style.borderColor = "#134e40";
+            setTimeout(() => { btn.style.display = 'none'; }, 2000);
+        }
+    </script>
+</body>
+</html>
