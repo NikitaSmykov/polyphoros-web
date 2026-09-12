@@ -12,6 +12,9 @@
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; color: #111; background: #fff; line-height: 1.6; }
         
         /* АНИМАЦИИ */
+            /* Плавное появление (Apple style) */
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes textFadeIn { 0% { opacity: 0; filter: blur(3px); transform: translateX(-10px); } 100% { opacity: 1; filter: blur(0); transform: translateX(0); } }
         @keyframes barExpand { 0% { width: 0; opacity: 0; } 100% { width: 48px; opacity: 1; } }
@@ -278,14 +281,30 @@
 
 
 </section>
-<!-- PIPELINE (ПОЛНАЯ ТАБЛИЦА) -->
-<section id="pipeline" class="section-gray" style="flex-direction: column; padding: 120px 10%; gap: 20px;">
-    <div style="text-align: center; max-width: 800px; margin: 0 auto; margin-bottom: 50px;">
-        <span class="sub-label">Global Therapeutic Assets</span>
-        <h2 style="font-size: 42px; color: #02312d; margin-bottom: 15px;">Internal Pipeline</h2>
-        <p style="color: #666; font-size: 18px;">Addressing unmet medical needs with regionally optimized, high-margin Biobetters designed for rapid out-licensing.</p>
-    </div>
-    <table class="pipeline-table">
+
+    <!-- БЛОК С КАРТОЙ (GLOBAL ASSETS) -->
+    <section class="section-white" style="padding-bottom: 40px; display: block; text-align: center;">
+        <div class="reveal" style="max-width: 1200px; margin: 0 auto;">
+            <!-- Строгий зеленый заголовок с широким интервалом -->
+            <span style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; color: #2d8b76; display: block; margin-bottom: 50px;">Global Therapeutic Assets</span>
+            
+            <!-- Карта мира -->
+            <img src="map.png" alt="Global Assets Map" style="width: 100%; max-width: 900px; height: auto; mix-blend-mode: multiply; opacity: 0.85; margin: 0 auto;">
+        </div>
+    </section>
+
+    <!-- PIPELINE (ТАБЛИЦА И ПОДВОДКА) -->
+    <section id="pipeline" class="section-gray" style="flex-direction: column; padding: 80px 10% 120px 10%; gap: 20px;">
+        
+        <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto; margin-bottom: 60px;">
+            <h2 style="font-size: clamp(32px, 5vw, 42px); color: #134e40; margin-bottom: 15px;">Internal Pipeline</h2>
+            <p style="color: #666; font-size: 18px; font-weight: 300; line-height: 1.6;">Addressing unmet medical needs with regionally optimized, high-margin Biobetters designed for rapid out-licensing.</p>
+        </div>
+
+        <!-- ТАБЛИЦА (Тут начинается твой старый код таблицы) -->
+        <div class="reveal" style="width: 100%;">
+            <table class="pipeline-table">
+
         <thead>
             <tr>
                 <th>Program (Small Molecule)</th>
@@ -377,4 +396,17 @@
         }
     </script>
 </body>
+    <!-- СКРИПТ АНИМАЦИИ ПЛАВНОГО ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ -->
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
 </html>
