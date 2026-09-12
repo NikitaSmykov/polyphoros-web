@@ -102,21 +102,29 @@
             /* =========================================
        АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ)
        ========================================= */
-    @media (max-width: 900px) {
+        /* ================= ВИДЕО ФОН ================= */
+    .hero-video-desktop, .hero-video-mobile {
+        position: absolute; top: 50%; left: 50%;
+        min-width: 100%; min-height: 100%;
+        width: auto; height: auto;
+        transform: translate(-50%, -50%);
+        z-index: 0; object-fit: cover;
+    }
+    .hero-video-mobile { display: none; } /* Прячем мобильное по умолчанию */
+    .hero-video-desktop { display: block; }
+    
+    
+       @media (max-width: 900px) {
         /* Шапка и меню складываются */
         header { flex-direction: column; align-items: flex-start; gap: 20px; padding: 20px 5%; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); }
         nav ul { flex-wrap: wrap; gap: 15px; }
 
         
-                   /* Золотая середина: капсулы элегантно выглядывают справа */
-        .hero video { 
-            left: 0 !important; 
-            top: 0 !important; 
-            transform: none !important; 
-            width: 100% !important; 
-            height: 100% !important; 
-            object-fit: cover !important; 
-            object-position: 35% center !important; 
+                    /* Переключаем на мобильное видео */
+        .hero-video-desktop { display: none !important; }
+        .hero-video-mobile { 
+            display: block !important; 
+            object-position: center !important;
         }
 
         /* Главный экран: текст становится меньше и получает защитное свечение */
@@ -154,7 +162,11 @@
     <section id="home" class="hero">
         
         <!-- ФОНОВОЕ ВИДЕО В ШАПКЕ (БЕЗ ЗАТЕМНЕНИЯ) -->
-        <video src="hero-bg.mp4" autoplay muted loop playsinline style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: 0; object-fit: cover;"></video>
+                <!-- ДЕСКТОПНОЕ ВИДЕО (16:9) -->
+        <video class="hero-video-desktop" src="hero-bg.mp4" autoplay muted loop playsinline></video>
+
+        <!-- МОБИЛЬНОЕ ВИДЕО (9:16) -->
+        <video class="hero-video-mobile" src="hero-bg-mobile.mp4" autoplay muted loop playsinline></video>
         
         <header style="z-index: 10; background: rgba(255, 255, 255, 0.4); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
             <a href="#home" class="logo" style="color: #000000;">
