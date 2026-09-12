@@ -120,22 +120,27 @@
         nav ul { flex-wrap: wrap; gap: 15px; }
 
         
-                    /* Переключаем на мобильное видео */
+                        /* Переключаем на мобильное видео и прижимаем его вправо */
         .hero-video-desktop { display: none !important; }
         .hero-video-mobile { 
             display: block !important; 
-            object-position: center !important;
+            object-position: right center !important; 
         }
 
-        /* Главный экран: текст становится меньше и получает защитное свечение */
-        .hero-content { padding-left: 5%; padding-right: 5%; margin-top: 100px; }
+                /* Главный экран: текст компактнее, сдвинут от края + сохраняем мощное свечение */
+        .hero-content { 
+            padding-left: 8%; 
+            padding-right: 5%; 
+            margin-top: 60px; 
+            max-width: 85%; 
+        }
         .hero-content h1 { 
-            font-size: 52px; 
+            font-size: 42px; 
             letter-spacing: -1.5px; 
             text-shadow: 0px 0px 30px rgba(255,255,255,1), 0px 0px 15px rgba(255,255,255,0.9) !important; 
         }
         .hero-content p { 
-            font-size: 16px; 
+            font-size: 15px; 
             text-shadow: 0px 0px 20px rgba(255,255,255,1), 0px 0px 10px rgba(255,255,255,0.9) !important; 
             font-weight: 600 !important;
         }
