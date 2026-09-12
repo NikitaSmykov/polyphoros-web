@@ -108,7 +108,7 @@
         nav ul { flex-wrap: wrap; gap: 15px; }
 
         
-                /* Жестко фокусируем камеру на левой пустой части видео */
+                   /* Золотая середина: капсулы элегантно выглядывают справа */
         .hero video { 
             left: 0 !important; 
             top: 0 !important; 
@@ -116,13 +116,21 @@
             width: 100% !important; 
             height: 100% !important; 
             object-fit: cover !important; 
-            object-position: 15% center !important; 
+            object-position: 35% center !important; 
         }
-        
-        /* Главный экран: текст становится меньше */
+
+        /* Главный экран: текст становится меньше и получает защитное свечение */
         .hero-content { padding-left: 5%; padding-right: 5%; margin-top: 100px; }
-        .hero-content h1 { font-size: 52px; letter-spacing: -1.5px; }
-        .hero-content p { font-size: 16px; }
+        .hero-content h1 { 
+            font-size: 52px; 
+            letter-spacing: -1.5px; 
+            text-shadow: 0px 0px 30px rgba(255,255,255,1), 0px 0px 15px rgba(255,255,255,0.9) !important; 
+        }
+        .hero-content p { 
+            font-size: 16px; 
+            text-shadow: 0px 0px 20px rgba(255,255,255,1), 0px 0px 10px rgba(255,255,255,0.9) !important; 
+            font-weight: 600 !important;
+        }
 
         /* Отступы секций сжимаются */
         .section-white, .section-gray { padding: 60px 5%; flex-direction: column; gap: 40px; }
