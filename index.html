@@ -274,12 +274,27 @@
     <a href="mailto:partners@polyphoros.com?subject=B2B%20Co-Development%20Inquiry" style="display: inline-block; margin: 0 auto; background: #134e40; color: #ffffff; padding: 16px 36px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; border-radius: 3px; transition: opacity 0.3s; box-shadow: 0 4px 15px rgba(19, 78, 64, 0.2);">Request Collaboration</a>
 </section>
 
-<!-- FOOTER -->
-<footer id="contact">
-    <p><strong>Polyphoros Pharmaceuticals</strong></p>
-    <p>Applied AI-Native Biotech & Formal Bio-Engineering.</p>
-    <p style="margin-top: 20px; font-size: 12px; opacity: 0.5;">&copy; 2026 Polyphoros. All rights reserved.</p>
-</footer>
+    <!-- ФУТЕР (Текст сбоку + фото с градиентом) -->
+    <footer id="contact" style="position: relative; width: 100%; min-height: 450px; display: flex; align-items: center; background: url('footer-bg.jpg') center/cover no-repeat; overflow: hidden;">
+        
+        <!-- Изумрудный градиент слева направо (от плотного к полупрозрачному) -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(6, 26, 21, 0.98) 0%, rgba(18, 70, 59, 0.9) 50%, rgba(18, 70, 59, 0.2) 100%); z-index: 1;"></div>
+        
+        <!-- Контент сбоку (выровнен по левому краю) -->
+        <div style="position: relative; z-index: 2; padding: 80px 10%; width: 100%; max-width: 900px;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 48px); font-weight: 400; line-height: 1.2; color: #ffffff; margin-bottom: 40px; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                "Our goal is to give people happy and healthy days!"
+            </h2>
+            
+            <!-- Декоративная линия -->
+            <div style="width: 60px; height: 3px; background: #6ee7b7; margin-bottom: 40px;"></div>
+            
+            <p style="font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; color: #ffffff;">Polyphoros Pharmaceuticals</p>
+            <p style="font-size: 12px; font-weight: 300; opacity: 0.6; color: #ffffff;">
+                &copy; 2026 Polyphoros. All rights reserved.
+            </p>
+        </div>
+    </footer>
 
 <!-- СКРИПТЫ ДЛЯ КНОПОК -->
 <script>
