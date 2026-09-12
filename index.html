@@ -17,7 +17,7 @@
         @keyframes barExpand { 0% { width: 0; opacity: 0; } 100% { width: 48px; opacity: 1; } }
 
         /* ГЛАВНЫЙ ЭКРАН (КЛАССИКА) */
-        .hero { position: relative; width: 100%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, rgba(6, 26, 21, 0.95) 0%, rgba(18, 70, 59, 0.85) 100%), url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; }
+        .hero { position: relative; width: 100%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; background: #061a15; overflow: hidden; }
         header { position: absolute; top: 0; left: 0; width: 100%; padding: 25px 6%; display: flex; justify-content: space-between; align-items: center; z-index: 10; background: rgba(4, 15, 12, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .logo { display: flex; align-items: center; gap: 18px; text-decoration: none; color: #fff; }
         .logo-bars { display: flex; flex-direction: column; gap: 12px; margin-top: 2px; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3)); }
@@ -102,27 +102,31 @@
     </style>
 </head>
 <body>
-    <!-- ГЛАВНЫЙ ЭКРАН -->
+            <!-- ГЛАВНЫЙ ЭКРАН -->
     <section id="home" class="hero">
-        <header>
-            <a href="#home" class="logo">
+        
+        <!-- ФОНОВОЕ ВИДЕО В ШАПКЕ (БЕЗ ЗАТЕМНЕНИЯ) -->
+        <video src="hero-bg.mp4" autoplay muted loop playsinline style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: 0; object-fit: cover;"></video>
+        
+        <header style="z-index: 10; background: rgba(255, 255, 255, 0.4); border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
+            <a href="#home" class="logo" style="color: #000000;">
                 <div class="logo-bars"><div class="bar-1"></div><div class="bar-2"></div></div>
                 <span class="logo-text">Polyphoros</span>
             </a>
             <nav>
                 <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#differentiation">Differentiation</a></li>
-                    <li><a href="#qed">Q.E.D. Engine</a></li>
-                    <li><a href="#pipeline">Pipeline</a></li>
+                    <li><a href="#about" style="color: #111;">About</a></li>
+                    <li><a href="#differentiation" style="color: #111;">Differentiation</a></li>
+                    <li><a href="#qed" style="color: #111;">Q.E.D. Engine</a></li>
+                    <li><a href="#pipeline" style="color: #111;">Pipeline</a></li>
                 </ul>
             </nav>
         </header>
-        <div class="hero-content">
-            <h1>Welcome<br>to Polyphoros</h1>
-            <p>Redefining the speed and safety of drug discovery and biobetter engineering through zero-hallucination AI and formal verification.</p>
+        <div class="hero-content" style="z-index: 2;">
+            <h1 style="color: #0a4741; text-shadow: none;">Welcome<br>to Polyphoros</h1>
+            <p style="color: #333333; font-weight: 500; font-size: 20px; max-width: 650px;">Redefining the speed and safety of drug discovery and biobetter engineering through zero-hallucination AI and formal verification.</p>
         </div>
-        <button class="cookie-btn" onclick="acceptCookies()">Manage cookie preferences</button>
+        <button class="cookie-btn" style="z-index: 10; color: #111; border-color: rgba(0,0,0,0.2); background: rgba(255,255,255,0.5);" onclick="acceptCookies()">Manage cookie preferences</button>
     </section>
 
     <!-- ABOUT US -->
@@ -173,51 +177,39 @@
         </div>
     </section>
 
-        <!-- Q.E.D. ENGINE (НАСТОЯЩЕЕ ЖИДКОЕ СТЕКЛО - LENS EFFECT) -->
-    <section id="qed" style="position: relative; padding: 140px 10%; overflow: hidden; background: #061a15 url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;">
+              <!-- Q.E.D. ENGINE (СВЕТЛЫЙ МИНИМАЛИЗМ) -->
+    <section id="qed" style="position: relative; padding: clamp(80px, 10vw, 120px) 5%; background: #f7faf9;">
 
-        <!-- ФОНОВОЕ ВИДЕО (Если браузер его заблокирует, останется красивая картинка выше) -->
-        <video src="hero-bg.mp4" autoplay muted loop playsinline style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: 1; object-fit: cover;"></video>
+        <!-- КОНТЕЙНЕР -->
+        <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
 
-        <!-- КОНТЕЙНЕР "ЖИДКОЕ СТЕКЛО" (Как на твоем референсе) -->
-        <div style="position: relative; z-index: 2; 
-                    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%); 
-                    backdrop-filter: blur(8px) brightness(110%) contrast(110%); 
-                    -webkit-backdrop-filter: blur(8px) brightness(110%) contrast(110%); 
-                    border: 1px solid rgba(255,255,255,0.3); 
-                    border-radius: 60px; /* Сильное скругление, как у капсулы */
-                    padding: 80px 60px; 
-                    max-width: 1200px; margin: 0 auto;
-                    /* МАГИЯ ЛИНЗЫ: Внешняя тень + Внутренний свет сверху + Внутренняя тень снизу */
-                    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 
-                                inset 0 10px 20px rgba(255,255,255,0.6), 
-                                inset 0 -10px 20px rgba(0,0,0,0.4);">
-
-                <div style="margin-bottom: 60px; text-align: center;">
-                <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #134e40; margin-bottom: 20px; display: block;">Our Core Technology</span>
-                <h2 style="font-size: 48px; font-weight: 600; color: #134e40; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;">The Q.E.D. Engine</h2>
-                <p style="font-size: 18px; color: #333333; font-weight: 500;">A proprietary, deterministic 4-stage in silico pipeline for targeted drug design.</p>
+            <!-- ЗАГОЛОВОК -->
+            <div style="margin-bottom: 60px; text-align: center;">
+                <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #2d8b76; margin-bottom: 20px; display: block;">Our Core Technology</span>
+                <h2 style="font-size: clamp(36px, 8vw, 48px); font-weight: 600; color: #134e40; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;">The Q.E.D. Engine</h2>
+                <p style="font-size: clamp(16px, 4vw, 18px); color: #555555; font-weight: 400; max-width: 700px; margin: 0 auto;">A proprietary, deterministic 4-stage in silico pipeline for targeted drug design.</p>
             </div>
 
-                        <!-- КАРТОЧКИ ВНУТРИ СТЕКЛА -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: left;">
-                <div style="background: rgba(255, 255, 255, 0.85); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <!-- СЕТКА КАРТОЧЕК -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: left;">
+                <div style="background: #ffffff; padding: 40px 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04);">
                     <div style="font-family: 'Playfair Display', serif; font-size: 24px; color: #134e40; font-weight: 700; margin-bottom: 15px;">01</div>
                     <h3 style="font-size: 20px; color: #111; margin-bottom: 10px; font-weight: 600;">Target Identification</h3>
-                    <p style="font-size: 15px; color: #333; line-height: 1.6;">Utilizing dynamic cellular pathway grounding and large-scale knowledge graphs to identify exactly disrupted Gene Regulatory Networks (GRN).</p>
+                    <p style="font-size: 15px; color: #666; line-height: 1.6;">Utilizing dynamic cellular pathway grounding and large-scale knowledge graphs to identify exactly disrupted Gene Regulatory Networks (GRN).</p>
                 </div>
-                <div style="background: rgba(255, 255, 255, 0.85); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <div style="background: #ffffff; padding: 40px 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04);">
                     <div style="font-family: 'Playfair Display', serif; font-size: 24px; color: #134e40; font-weight: 700; margin-bottom: 15px;">02</div>
                     <h3 style="font-size: 20px; color: #111; margin-bottom: 10px; font-weight: 600;">Structural Synthesis</h3>
-                    <p style="font-size: 15px; color: #333; line-height: 1.6;">Multi-agent routing to synthesize novel chemical entities (NCEs) or radically optimize existing scaffolds for maximum bioavailability.</p>
+                    <p style="font-size: 15px; color: #666; line-height: 1.6;">Multi-agent routing to synthesize novel chemical entities (NCEs) or radically optimize existing scaffolds for maximum bioavailability.</p>
                 </div>
-                <div style="background: rgba(255, 255, 255, 0.85); padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <div style="background: #ffffff; padding: 40px 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04);">
                     <div style="font-family: 'Playfair Display', serif; font-size: 24px; color: #134e40; font-weight: 700; margin-bottom: 15px;">03</div>
                     <h3 style="font-size: 20px; color: #111; margin-bottom: 10px; font-weight: 600;">Formal Verification</h3>
-                    <p style="font-size: 15px; color: #333; line-height: 1.6;">The industry's first mathematical safety filter. We use formal theorem proving (Lean 4) to guarantee ADMET compliance prior to synthesis.</p>
+                    <p style="font-size: 15px; color: #666; line-height: 1.6;">The industry's first mathematical safety filter. We use formal theorem proving (Lean 4) to guarantee ADMET compliance prior to synthesis.</p>
                 </div>
             </div>
-    </section>
+        </div>
+    </section>  
 
 
 </section>
@@ -225,7 +217,7 @@
 <section id="pipeline" class="section-gray" style="flex-direction: column; padding: 120px 10%; gap: 20px;">
     <div style="text-align: center; max-width: 800px; margin: 0 auto; margin-bottom: 50px;">
         <span class="sub-label">Global Therapeutic Assets</span>
-        <h2 style="font-size: 42px; color: #134e40; margin-bottom: 15px;">Internal Pipeline</h2>
+        <h2 style="font-size: 42px; color: #02312d; margin-bottom: 15px;">Internal Pipeline</h2>
         <p style="color: #666; font-size: 18px;">Addressing unmet medical needs with regionally optimized, high-margin Biobetters designed for rapid out-licensing.</p>
     </div>
     <table class="pipeline-table">
