@@ -107,8 +107,17 @@
         header { flex-direction: column; align-items: flex-start; gap: 20px; padding: 20px 5%; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); }
         nav ul { flex-wrap: wrap; gap: 15px; }
 
-        /* Видео сдвигается вправо, чтобы капсулы не перекрывали текст */
-        .hero video { object-position: 85% center !important; }
+        
+                /* Жестко фокусируем камеру на левой пустой части видео */
+        .hero video { 
+            left: 0 !important; 
+            top: 0 !important; 
+            transform: none !important; 
+            width: 100% !important; 
+            height: 100% !important; 
+            object-fit: cover !important; 
+            object-position: 15% center !important; 
+        }
         
         /* Главный экран: текст становится меньше */
         .hero-content { padding-left: 5%; padding-right: 5%; margin-top: 100px; }
